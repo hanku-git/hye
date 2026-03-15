@@ -1,0 +1,6 @@
+bool do_task_recog
+int32 target_id
+---
+int32 recog_stage_id
+int32 recog_part_id
+bool is_recog

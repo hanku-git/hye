@@ -1,0 +1,9 @@
+uint8 index
+float64 vel
+float64 acc
+bool is_joint_space
+bool is_base_frame
+bool jog_flag
+float64 stop_time
+---
+uint32 error

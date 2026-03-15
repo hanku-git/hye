@@ -1,0 +1,12 @@
+bool flag_impedance
+bool is_tool_frame
+bool[] imped_selection
+bool[] force_selection
+bool[] pos_selection
+float64[] m_gain
+float64[] b_gain
+float64[] k_gain
+float64[] force_limit
+float64[] force_des
+---
+uint32 error

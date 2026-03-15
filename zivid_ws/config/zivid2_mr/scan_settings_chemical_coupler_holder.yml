@@ -1,0 +1,100 @@
+__version__: 27
+Settings:
+  Acquisitions:
+    - Acquisition:
+        Aperture: 2.83
+        Brightness: 2.5
+        ExposureTime: 1000
+        Gain: 1
+    - Acquisition:
+        Aperture: 2.83
+        Brightness: 2.5
+        ExposureTime: 10000
+        Gain: 1
+  Color:
+    __version__: 7
+    Settings2D:
+      Acquisitions:
+        - Acquisition:
+            Aperture: 2.83
+            Brightness: 2.5
+            ExposureTime: 2000
+            Gain: 1
+      Processing:
+        Color:
+          Balance:
+            Blue: 1
+            Green: 1
+            Red: 1
+          Experimental:
+            Mode: automatic
+          Gamma: 1
+      Sampling:
+        Color: rgb
+        Pixel: all
+  Diagnostics:
+    Enabled: no
+  Engine: sage
+  Processing:
+    Color:
+      Balance:
+        Blue: __not_set__
+        Green: __not_set__
+        Red: __not_set__
+      Experimental:
+        Mode: __not_set__
+      Gamma: __not_set__
+    Filters:
+      Cluster:
+        Removal:
+          Enabled: yes
+          MaxNeighborDistance: 3
+          MinArea: 25
+      Experimental:
+        ContrastDistortion:
+          Correction:
+            Enabled: no
+            Strength: 0.2
+          Removal:
+            Enabled: yes
+            Threshold: 0.3
+      Hole:
+        Repair:
+          Enabled: yes
+          HoleSize: 0.1
+          Strictness: 4
+      Noise:
+        Removal:
+          Enabled: yes
+          Threshold: 7
+        Repair:
+          Enabled: yes
+        Suppression:
+          Enabled: no
+      Outlier:
+        Removal:
+          Enabled: yes
+          Threshold: 5
+      Reflection:
+        Removal:
+          Enabled: yes
+          Mode: global
+      Smoothing:
+        Gaussian:
+          Enabled: yes
+          Sigma: 1
+    Resampling:
+      Mode: disabled
+  RegionOfInterest:
+    Box:
+      Enabled: yes
+      Extents: [0, 77.595529556274414]
+      PointA: [82.6868744, -150.275696, 381.028992]
+      PointB: [-85.5320435, 47.9648056, 381.028992]
+      PointO: [-85.5320435, -150.275696, 381.028992]
+    Depth:
+      Enabled: no
+      Range: [300, 1100]
+  Sampling:
+    Color: __not_set__
+    Pixel: by2x2

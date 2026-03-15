@@ -1,0 +1,10 @@
+float64[] xs_target
+float64[] xds_target
+float64[] xdds_target
+float64[] radiuses
+float64[] waypoint_xds
+float64[] qs_redundant
+bool is_radius_percent
+uint8 waypoint_num
+---
+uint32 error

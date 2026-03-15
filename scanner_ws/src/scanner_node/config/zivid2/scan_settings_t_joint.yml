@@ -1,0 +1,75 @@
+__version__:
+    serializer: 1
+    data: 20
+Settings:
+    Acquisitions:
+        - Acquisition:
+              Aperture: 2.98
+              Brightness: 2.5
+              ExposureTime: 16667
+              Gain: 1
+    Diagnostics:
+        Enabled: no
+    Experimental:
+        Engine: stripe
+    Processing:
+        Color:
+            Balance:
+                Blue: 1
+                Green: 1
+                Red: 1
+            Experimental:
+                Mode: automatic
+            Gamma: 1
+        Filters:
+            Cluster:
+                Removal:
+                    Enabled: yes
+                    MaxNeighborDistance: 5
+                    MinArea: 200
+            Experimental:
+                ContrastDistortion:
+                    Correction:
+                        Enabled: yes
+                        Strength: 0.3
+                    Removal:
+                        Enabled: no
+                        Threshold: 0.1
+                HoleFilling:
+                    Enabled: yes
+                    HoleSize: 0.1
+                    Strictness: 4
+            Noise:
+                Removal:
+                    Enabled: yes
+                    Threshold: 2
+                Suppression:
+                    Enabled: no
+                Repair:
+                    Enabled: yes
+            Outlier:
+                Removal:
+                    Enabled: yes
+                    Threshold: 10
+            Reflection:
+                Removal:
+                    Enabled: yes
+                    Experimental:
+                        Mode: global
+            Smoothing:
+                Gaussian:
+                    Enabled: yes
+                    Sigma: 1
+    RegionOfInterest:
+        Box:
+            Enabled: yes
+            Extents: [-1000, 1000]
+            PointA: [-371.993744, -107.971153, 1330.1416]
+            PointB: [356.841675, 293.389069, 1190.91602]
+            PointO: [-359.225128, 296.121582, 1175.10144]
+        Depth:
+            Enabled: no
+            Range: [800, 2000]
+    Sampling:
+        Color: rgb
+        Pixel: blueSubsample2x2

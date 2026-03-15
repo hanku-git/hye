@@ -1,0 +1,54 @@
+# Open3D Matching Node Parameters
+
+matching_node:
+  ros__parameters:
+    # Debug mode
+    debug_mode: false
+    
+    # Matching accuracy threshold (%)
+    matching_accuracy_limit: 50.0
+    
+    # Quick alignment (RANSAC-based feature matching)
+    do_quick_align: true
+    quick_align_max_correspondence_distance: 0.05  # 50mm
+    quick_align_iteration: 1000
+    quick_align_sample_num: 4
+    
+    # ICP parameters
+    icp_max_iterations: 50
+    icp_correspondence_distance: 0.05  # 50mm
+    icp_transformation_eps: 0.001
+    icp_euclidean_fitness_eps: 0.001
+    
+    # Normal estimation
+    normal_radius: 0.01  # 10mm
+    normal_max_nn: 30
+    
+    # FPFH feature parameters
+    fpfh_radius: 0.05  # 50mm
+    fpfh_max_nn: 100
+    
+    # Downsampling
+    voxel_size_downsample: 0.005  # 5mm
+    do_downsample_measured: true
+    do_downsample_cad: true
+    
+    # Filtering
+    do_statistical_filtering: false
+    statistical_filter_nb_neighbors: 50
+    statistical_filter_std_ratio: 1.0
+    
+    # Euclidean clustering
+    do_euclidean_filtering: true
+    euclidean_cluster_tolerance: 0.01  # 10mm
+    euclidean_cluster_min_size: 100
+    euclidean_cluster_max_size: 25000
+    
+    # Collision checking
+    do_collision_check: true
+    collision_voxel_size: 0.001  # 1mm
+    collision_pt_threshold: 100
+    
+    # View frustum (default)
+    view_frustum: [-1.0, 1.0, -1.0, 1.0, 0.0, 2.0]  # [min_x, max_x, min_y, max_y, min_z, max_z] in meters
+

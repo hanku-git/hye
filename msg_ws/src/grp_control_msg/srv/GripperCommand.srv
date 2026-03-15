@@ -1,0 +1,7 @@
+uint16 command
+int16 value_1
+int16 value_2
+int16 value
+uint16 slave_num
+---
+bool successed

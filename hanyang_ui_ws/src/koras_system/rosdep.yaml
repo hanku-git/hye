@@ -1,0 +1,8 @@
+hanyang_matching_msgs:
+  ubuntu: [ros-humble-bin-picking-msgs]
+
+grp_control_msg:
+  ubuntu: [ros-humble-grp-control-msg]
+  
+kcr_control_msg:
+  ubuntu: [ros-humble-kcr-control-msg]  

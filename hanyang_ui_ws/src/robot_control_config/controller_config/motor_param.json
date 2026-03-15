@@ -1,0 +1,81 @@
+{
+    "js_dof": 6,
+
+    "_Comment_motor_param_1": "Do not fix unit !",
+    "motor_torque_const": {
+        "unit": "Nm/Adc",
+        "value": [0.159, 0.159, 0.159, 0.0813, 0.0813, 0.0813]
+    },
+
+    "jts_torque_const": {
+        "unit": "Nm/?",
+        "value": [0.238659, 0.243959, 0.195332, -0.037934, 0.038931, -0.089602],
+        "multiply": [1, 1, 1, 1, 1, 1],
+        "divide": [1, 1, 1, 1, 1, 1]
+    },
+
+    "js_torque_limit": {
+        "unit": "Nm",
+        "value": [1000, 1000, 1000, 500, 500, 500]
+    },
+
+    "reduction_ratio": {
+        "unit": "+ - ratio",
+        "value": [161, -161, 161, 121, -121, 121]
+    },
+
+    "input_encoder_resolution": {
+        "unit": "+pulse (incremental encoder)",
+        "value": [32768, 32768, 32768, 32768, 32768, 32768]
+    },
+
+    "input_encoder_resolution_abs": {
+        "unit": "+pulse (absolute encoder)",
+        "value": [65536, 65536, 65536, 65536, 65536, 65536]
+    },
+
+    "input_encoder_direction": {
+        "unit": "+1 or -1",
+        "value": [-1, 1, -1, -1, 1, -1]
+    },
+
+    "output_encoder_resolution_abs": {
+        "unit": "+pulse (absolute encoder)",
+        "value": [4194304, 4194304, 4194304, 4194304, 4194304, 4194304]
+    },
+
+    "output_encoder_direction": {
+        "unit": "+1 or -1",
+        "value": [1, -1, 1, 1, -1, 1]
+    },
+
+    "js_limit_angle": {
+        "unit": "deg",
+        "value_min": [-361, -361, -361, -361, -361, -361],
+        "value_max": [ 361,  361,  361,  361,  361,  361]
+    },
+
+    "js_init_angle": {
+        "unit": "deg",
+        "value": [0, -90, 0, -90, 0, 0]
+    },
+
+    "_Comment_motor_param_2": "Rotor inertia const",
+    "rotor_inertia": {
+        "unit": "kg*m^2 * 10^(-4)",
+        "wave_generator": [2.85, 2.85, 2.85, 0.193, 0.193, 0.193],
+        "motor_rotor"   : [2.71, 2.71, 2.71, 0.785, 0.785, 0.785],
+        "etc"           : [1.93, 1.93, 1.88, 0.400, 0.400, 0.400]
+    },
+
+    "_Comment_motor_param_3": "Zero position bias [JS]",
+    "output_encoder_pulse_bias": {
+        "unit": "Abs pulse of output encoder",
+        "value": [2238067, 1389068, 1264577, 2853095, 1217376, 4008182]
+    },
+
+    "input_encoder_pulse_bias": {
+        "unit": "Abs pulse of input encoder",
+        "value": [72, 14323, 36126, 17041, 28119, 52651]
+    }
+ }

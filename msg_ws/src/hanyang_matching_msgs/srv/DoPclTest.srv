@@ -1,0 +1,9 @@
+bool do_test
+int32 target_id
+
+float64[] bounding_box
+
+---
+float64[] pose
+float64[] output_pose_set
+bool is_pose

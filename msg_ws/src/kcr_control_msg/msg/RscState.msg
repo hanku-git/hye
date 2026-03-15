@@ -1,0 +1,5 @@
+uint32 rsc_state
+uint16 rsc_input_state
+uint16 rsc_err_list_voltage
+uint32 rsc_current
+bool is_joint_connected

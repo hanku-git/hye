@@ -1,0 +1,75 @@
+__version__:
+  serializer: 1
+  data: 20
+Settings:
+  Acquisitions:
+    - Acquisition:
+        Aperture: 2.98
+        Brightness: 2.5
+        ExposureTime: 16667
+        Gain: 1
+  Diagnostics:
+    Enabled: no
+  Experimental:
+    Engine: stripe
+  Processing:
+    Color:
+      Balance:
+        Blue: 1
+        Green: 1
+        Red: 1
+      Experimental:
+        Mode: automatic
+      Gamma: 1
+    Filters:
+      Cluster:
+        Removal:
+          Enabled: yes
+          MaxNeighborDistance: 5
+          MinArea: 200
+      Experimental:
+        ContrastDistortion:
+          Correction:
+            Enabled: yes
+            Strength: 0.3
+          Removal:
+            Enabled: no
+            Threshold: 0.1
+        HoleFilling:
+          Enabled: yes
+          HoleSize: 0.1
+          Strictness: 4
+      Noise:
+        Removal:
+          Enabled: yes
+          Threshold: 2
+        Repair:
+          Enabled: yes
+        Suppression:
+          Enabled: no
+      Outlier:
+        Removal:
+          Enabled: yes
+          Threshold: 10
+      Reflection:
+        Removal:
+          Enabled: yes
+          Experimental:
+            Mode: global
+      Smoothing:
+        Gaussian:
+          Enabled: yes
+          Sigma: 1
+  RegionOfInterest:
+    Box:
+      Enabled: yes
+      Extents: [-350, 100]
+      PointA: [-291.230713, -124.900002, 1304.07446]
+      PointB: [306.804352, 294.170868, 1196.10095]
+      PointO: [-291.712921, 292.454987, 1187.17993]
+    Depth:
+      Enabled: no
+      Range: [800, 2000]
+  Sampling:
+    Color: rgb
+    Pixel: blueSubsample2x2

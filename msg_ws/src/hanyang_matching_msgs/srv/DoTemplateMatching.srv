@@ -1,0 +1,66 @@
+bool do_scan_sampling
+bool do_set_only_parameters
+bool do_overwrite_json
+bool debug_mode
+
+bool is_symmetric
+
+int32 robot_id
+int32 target_id
+string target_name
+int32 sampling_num
+bool is_base_frame_unknown
+
+bool do_cloud_clear
+
+int32 feature_ext_method
+float64 voxel_downsampling_size
+
+int32 segmentation_method
+
+int32 rgs_normal_k
+int32 rgs_min_size
+int32 rgs_max_size
+float64 rgs_thre_angle
+float64 rgs_thre_curvature
+int32 rgs_neighbor_k
+
+float64 color_rgs_neighbor_r
+float64 color_rgs_thre_1st_color
+float64 color_rgs_thre_2nd_color
+int32 color_rgs_min_cluster_size
+float64 color_rgs_neighbor_r_2
+float64 color_rgs_thre_1st_color_2
+float64 color_rgs_thre_2nd_color_2
+int32 color_rgs_min_cluster_size_2
+
+float64 euclidean_cluster_tol
+int32 euclidean_min_cluster_size
+int32 euclidean_max_cluster_size
+
+float64[] custom_transformation_pose
+float64[] pose_b2e_measured
+
+float64[] robot_dh_parameters
+float64[] robot_tcp_default
+float64[] robot_tcp
+
+bool is_r2cam_calibration_js_position_set_by_teaching
+float64[] r2cam_calibration_js_position
+
+---
+float64[] pose
+float64[] sub_pose
+float64[] zig_pose
+float64[] robot_camera_calibration_js_position
+float64[] robot_camera_calibration_htm_b2s_global
+float64 approach_distance
+bool is_pose
+float64 matching_accuracy
+float64 matching_accuracy_limit
+bool is_grasping_pose_flipped
+uint16 gripper_open_length
+uint16 gripper_close_length
+int32 detected_mask_num
+uint16 gripper_tip_index
+BinPickingResults[] bp_result_set

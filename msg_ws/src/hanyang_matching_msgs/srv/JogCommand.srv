@@ -1,0 +1,7 @@
+float64[] desxdot
+float64[] desqdot
+bool isjogbtnpressed
+bool iscsjog
+bool isxpadcontroller
+int8 operatingmode
+---

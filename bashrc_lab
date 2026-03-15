@@ -1,0 +1,184 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+
+source /home/$(whoami)/hanyang_ui_ws/install/setup.bash
+source /home/$(whoami)/hanyang_matching_ws/install/setup.bash
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+export CUDA_HOME=/usr/local/cuda-12.6
+export PATH=/usr/local/cuda-12.6/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/local/lib:$LD_LIBRARY_PATH
+
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1
+#export QT_SCREEN_SCALE_FACTORS=2
+export QT_SCREEN_SCALE_FACTORS=1
+export QT_STYLE_OVERRIDE=Fusion
+
+source /opt/ros/humble/setup.bash
+source /home/$(whoami)/ros2_numpy_ws/install/setup.bash
+source /home/$(whoami)/keycode_ws/install/setup.bash
+source /home/$(whoami)/pcl_ros_ws/install/setup.bash
+source /home/$(whoami)/msg_ws/install/setup.bash
+#source /home/$(whoami)/bp_gui_ws_sim/install/setup.bash
+#source /home/$(whoami)/bin_picking_ws/install/setup.bash
+#source /home/$(whoami)/sam_ws/install/setup.bash
+#source /home/$(whoami)/cal_ws/install/setup.bash
+#source /home/$(whoami)/zivid_ws/install/setup.bash
+source /home/$(whoami)/ros2_numpy_ws/install/setup.bash
+source /home/$(whoami)/doosan_ros2_ws/install/setup.bash
+source /home/$(whoami)/gripper_ws/install/setup.bash
+source /home/$(whoami)/scanner_ws/install/setup.bash
+# Alias
+alias br='sudo gedit ~/.bashrc'
+alias sb='source ~/.bashrc'
+alias cb='colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release'
+alias cb_clean=' sudo rm -r install log build'
+#alias controller='ros2 run ur_controller ur_controller 192.168.0.12'
+#alias ui='ros2 run robot_control_ui robot_control_ui'
+alias plot='ros2 run plotjuggler plotjuggler'
+#alias grip2='ros2 run kr_gcs_ui kr_gcs_ui'
+alias grip2='sudo chmod a+rw /dev/ttyUSB0&&ros2 run kr_gcs_ui kr_gcs_ui'
+alias grip_no_ui='sudo chmod a+rw /dev/ttyUSB0&&ros2 run kr_gcs_ui kr_gcs_ui --no-ui'
+#alias bg='ros2 run bp_gui binpicking'
+alias grip='sudo chmod a+rw /dev/ttyUSB0&&ros2 launch grp_control slave1.xml'
+#alias grip='sudo chmod a+rw /dev/ttyUSB0&&ros2 run kr_gcs_ui kr_gcs_ui'
+#alias tag='ros2 run apriltag_ros apriltag_node --ros-args -r image_rect:=/camera/camera/color/image_rect_raw --ros-args -r camera_info:=/camera/camera/color/camera_info --params-file /home/$(whoami)/apriltag_ws/src/tags_36h11.yaml'
+#alias tag_test='ros2 run sub_server_package sub_server_package'
+
+#export ROS_DOMAIN_ID=5
+alias dscontroller='ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=real host:=192.168.100.108 port:=12345 model:=m1013 gui:=false'
+alias vcontroller='ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=virtual host:=127.0.0.1 port:=12345 model:=m1013'
+#alias dsui='ros2 run bp_gui binpicking'
+
+alias keycode1='cd /home/korasrobotics/keycode_ws/src/keyring_detection/keyring_detection
+ && python3 detect_red_dot_node_for_drum.py'
+alias keycode2='cd /home/korasrobotics/keycode_ws/src/keyring_detection/keyring_detection
+ && python3 detect_red_dot_node_for_holder.py'
+alias ui='ros2 run hanyang_eng_koras_system kr_sys HANYANG_LAUNCH'
+alias vis='ros2 launch hanyang_matching_visualizer visualize_zvd_cad_grasp.xml'
+alias zvd='ros2 run hanyang_zivid_scanner_node zivid_topic_node.py'
+alias sc='ros2 run hanyang_matching_process zivid_scan_node'
+alias mc='ros2 run hanyang_matching_process matching_node'
+alias zv='ros2 run hanyang_zivid_scanner_node zivid_topic_node.py'
+alias sam='ros2 run hanyang_sam_node sam_node.py'
+

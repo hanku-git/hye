@@ -1,0 +1,6 @@
+uint8 command
+int16 value
+uint16 duration
+uint16 slave_num
+---
+bool successed

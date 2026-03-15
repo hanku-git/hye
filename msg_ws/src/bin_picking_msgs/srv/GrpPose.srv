@@ -1,0 +1,9 @@
+# request
+sensor_msgs/Image rgb_req
+sensor_msgs/PointCloud2 cloudreq
+sensor_msgs/PointCloud2 wholecloudreq
+---
+# response
+int8 n_grpposes_res
+Gpos[] grppos_res # x, y, z, w
+std_msgs/Float64MultiArray[] grprot_res # theta

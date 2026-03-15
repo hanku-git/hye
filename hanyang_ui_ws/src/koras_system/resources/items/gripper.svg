@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Microsoft Visio 11.0, SVG Export, v1.0에서 생성되었습니다. gripper.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="4.40945in" height="4.44882in"
+		viewBox="0 0 317.48 320.315" xml:space="preserve" color-interpolation-filters="sRGB" class="st2">
+	<v:documentProperties v:langID="1042" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(0):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:6}
+		.st2 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<v:userDefs>
+			<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+			<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+		</v:userDefs>
+		<title>페이지-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="순서도" v:index="0"/>
+		<v:layer v:name="연결선" v:index="1"/>
+		<g id="shape7-1" v:mID="7" v:groupContext="shape" v:layerMember="1;0" transform="translate(115.852,-202.195)">
+			<title>다른 페이지 참조</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeAppearance" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 236.21 L0 278.26 L42.05 320.31 L84.1 278.26 L84.1 236.21 L0 236.21 Z" class="st1"/>
+		</g>
+		<g id="shape3-3" v:mID="3" v:groupContext="shape" v:layerMember="0" transform="translate(260.874,5.71447) rotate(45)">
+			<title>시작/끝</title>
+			<v:custProps>
+				<v:cp v:nameU="Cost" v:lbl="비용" v:prompt="" v:type="7" v:format="@" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="ProcessNumber" v:lbl="공정 번호" v:prompt="" v:type="2" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Owner" v:lbl="소유자" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Function" v:lbl="함수" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="StartDate" v:lbl="시작 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="EndDate" v:lbl="끝 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Status" v:lbl="상태" v:prompt="" v:type="4" v:format=";시작 안 함;진행 중;완료;지연;입력 대기 중" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="1042" v:cal="0" v:val="VT4()"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.39370078740157):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.39370078740157):24"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M14.51 320.31 L43.53 320.31 A14.5099 16.1739 -180 0 0 43.53 287.97 L14.51 287.97 A14.5099 16.1739 -180 1 0 14.51
+						 320.31 Z" class="st1"/>
+		</g>
+		<g id="shape5-5" v:mID="5" v:groupContext="shape" v:layerMember="1;0" transform="translate(4.25197,-93.5613)">
+			<title>같은 페이지 참조</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 294.44 A25.8782 25.8782 0 0 1 51.76 294.44 A25.8782 25.8782 0 1 1 0 294.44 Z" class="st1"/>
+		</g>
+		<g id="shape4-7" v:mID="4" v:groupContext="shape" v:layerMember="0" transform="translate(255.531,-65.8038) rotate(45)">
+			<title>사용자 지정 2</title>
+			<v:custProps>
+				<v:cp v:nameU="Cost" v:lbl="비용" v:prompt="" v:type="7" v:format="@" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="ProcessNumber" v:lbl="공정 번호" v:prompt="" v:type="2" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Owner" v:lbl="소유자" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Function" v:lbl="함수" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="StartDate" v:lbl="시작 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="EndDate" v:lbl="끝 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Status" v:lbl="상태" v:prompt="" v:type="4" v:format=";시작 안 함;진행 중;완료;지연;입력 대기 중" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="1042" v:cal="0" v:val="VT4()"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.59055118110236):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.59055118110236):24"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M14.68 320.31 L44.05 320.31 L58.73 200.45 L0 200.45 L14.68 320.31 Z" class="st1"/>
+		</g>
+		<g id="shape9-9" v:mID="9" v:groupContext="shape" v:layerMember="0"
+				transform="translate(52.3547,5.71447) rotate(-45) scale(-1,1)">
+			<title>시작/끝.9</title>
+			<v:custProps>
+				<v:cp v:nameU="Cost" v:lbl="비용" v:prompt="" v:type="7" v:format="@" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="ProcessNumber" v:lbl="공정 번호" v:prompt="" v:type="2" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Owner" v:lbl="소유자" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Function" v:lbl="함수" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="StartDate" v:lbl="시작 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="EndDate" v:lbl="끝 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Status" v:lbl="상태" v:prompt="" v:type="4" v:format=";시작 안 함;진행 중;완료;지연;입력 대기 중" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="1042" v:cal="0" v:val="VT4()"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.39370078740157):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.39370078740157):24"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M14.51 320.31 L43.53 320.31 A14.5099 16.1739 -180 0 0 43.53 287.97 L14.51 287.97 A14.5099 16.1739 -180 1 0 14.51
+						 320.31 Z" class="st1"/>
+		</g>
+		<g id="shape10-11" v:mID="10" v:groupContext="shape" v:layerMember="1;0"
+				transform="translate(308.976,-93.5613) scale(-1,1)">
+			<title>같은 페이지 참조.10</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 294.44 A25.8782 25.8782 0 0 1 51.76 294.44 A25.8782 25.8782 0 1 1 0 294.44 Z" class="st1"/>
+		</g>
+		<g id="shape11-13" v:mID="11" v:groupContext="shape" v:layerMember="0"
+				transform="translate(57.6974,-65.8038) rotate(-45) scale(-1,1)">
+			<title>사용자 지정 2.11</title>
+			<v:custProps>
+				<v:cp v:nameU="Cost" v:lbl="비용" v:prompt="" v:type="7" v:format="@" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="ProcessNumber" v:lbl="공정 번호" v:prompt="" v:type="2" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Owner" v:lbl="소유자" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Function" v:lbl="함수" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0" v:val="VT4()"/>
+				<v:cp v:nameU="StartDate" v:lbl="시작 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false"
+						v:ask="false" v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="EndDate" v:lbl="끝 날짜" v:prompt="" v:type="5" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1042" v:cal="0"/>
+				<v:cp v:nameU="Status" v:lbl="상태" v:prompt="" v:type="4" v:format=";시작 안 함;진행 중;완료;지연;입력 대기 중" v:sortKey=""
+						v:invis="false" v:ask="false" v:langID="1042" v:cal="0" v:val="VT4()"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="DefaultWidth" v:prompt="" v:val="VT0(0.98425196850394):24"/>
+				<v:ud v:nameU="DefaultHeight" v:prompt="" v:val="VT0(0.59055118110236):24"/>
+				<v:ud v:nameU="ResizeTxtHeight" v:prompt="" v:val="VT0(0.59055118110236):24"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M14.68 320.31 L44.05 320.31 L58.73 200.45 L0 200.45 L14.68 320.31 Z" class="st1"/>
+		</g>
+	</g>
+</svg>

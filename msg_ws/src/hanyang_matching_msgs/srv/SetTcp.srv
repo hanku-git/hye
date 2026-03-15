@@ -1,0 +1,15 @@
+float64[] joint_position
+float64[] cs_pose_input
+float64 max_velocity
+float64 acceleration
+bool relative
+int8 operating_mode
+bool force_bias
+int32 tcp_idx
+
+bool get_measured_js_value
+
+
+---
+float64[] pose
+float64[] js_position_output

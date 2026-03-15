@@ -1,0 +1,4 @@
+bool do_function
+int32 target_id
+---
+float64[] relative_position

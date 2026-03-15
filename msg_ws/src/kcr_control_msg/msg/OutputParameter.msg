@@ -1,0 +1,13 @@
+std_msgs/Header header
+uint16[] control_word
+uint16[] mode_of_operation
+int32[] target_position
+int32[] target_velocity
+int32[] target_acceleration
+int16[] target_torque
+uint16 led_color
+uint16 led_switching
+uint16 grp_control_word
+uint16 grp_value
+uint16 grp_command
+uint16 digital_output

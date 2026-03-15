@@ -1,0 +1,95 @@
+__version__:
+  serializer: 1
+  data: 22
+Settings:
+  Acquisitions:
+    - Acquisition:
+        Aperture: 2.38
+        Brightness: 2.5
+        ExposureTime: 10000
+        Gain: 1
+    - Acquisition:
+        Aperture: 3.36
+        Brightness: 2.5
+        ExposureTime: 33333
+        Gain: 1
+    - Acquisition:
+        Aperture: 11.31
+        Brightness: 2.5
+        ExposureTime: 70000
+        Gain: 1
+    - Acquisition:
+        Aperture: 17.45
+        Brightness: 2.5
+        ExposureTime: 35000
+        Gain: 1
+    - Acquisition:
+        Aperture: 3.67
+        Brightness: 2.5
+        ExposureTime: 85000
+        Gain: 1
+  Diagnostics:
+    Enabled: no
+  Experimental:
+    Engine: stripe
+  Processing:
+    Color:
+      Balance:
+        Blue: 1
+        Green: 1
+        Red: 1
+      Experimental:
+        Mode: automatic
+      Gamma: 1
+    Filters:
+      Cluster:
+        Removal:
+          Enabled: no
+          MaxNeighborDistance: 6
+          MinArea: 625
+      Experimental:
+        ContrastDistortion:
+          Correction:
+            Enabled: yes
+            Strength: 0.2
+          Removal:
+            Enabled: no
+            Threshold: 0.4
+        HoleFilling:
+          Enabled: no
+          HoleSize: 0.5
+          Strictness: 1
+      Noise:
+        Removal:
+          Enabled: yes
+          Threshold: 10
+        Repair:
+          Enabled: no
+        Suppression:
+          Enabled: no
+      Outlier:
+        Removal:
+          Enabled: yes
+          Threshold: 10
+      Reflection:
+        Removal:
+          Enabled: yes
+          Experimental:
+            Mode: global
+      Smoothing:
+        Gaussian:
+          Enabled: no
+          Sigma: 2
+  RegionOfInterest:
+    Box:
+      Enabled: yes
+      Extents: [-100, -3]
+      PointA: [234.699997, -312.899994, 1389.62878]
+      PointB: [-242.5, -20.7999992, 1328.79382]
+      PointO: [-237.600006, -326.5, 1393.40552]
+    Depth:
+      Enabled: yes
+      Range: [800, 2000]
+  Sampling:
+    Color: rgb
+    Pixel: blueSubsample2x2

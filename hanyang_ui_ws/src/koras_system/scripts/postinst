@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# 환경 변수 설정
+export SECUREAPP_DATA_PATH="/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys"
+export SECUREAPP_SIGNATURE_PATH="/opt/ros/humble/share/hanyang_eng_koras_system/example.sig"
+export SECUREAPP_PUBLIC_KEY_PATH="/opt/ros/humble/share/hanyang_eng_koras_system/public.pem"
+
+# 프로그램 실행 전에 필요한 권한 부여
+chmod +x /opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys
+
+# 필요시 sudoers 파일에 추가하여 비밀번호 없이 sudo 사용 가능하게 설정
+echo "$USER ALL=(ALL) NOPASSWD: /usr/sbin/udevadm" | sudo tee /etc/sudoers.d/udevadm
+
+# 프로그램 실행
+ros2 run hanyang_eng_koras_system kr_sys

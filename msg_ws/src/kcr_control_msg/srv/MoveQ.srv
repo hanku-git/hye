@@ -1,0 +1,6 @@
+float64[] q_target
+float64 qd_target
+float64 qdd_target
+bool is_relative
+---
+uint32 error

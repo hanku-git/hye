@@ -1,0 +1,10 @@
+bool flag_tcp
+bool flag_payload
+bool flag_com
+bool flag_poa
+float64[] tcp
+float64[] com
+float64[] poa
+float64 payload
+---
+uint32 error

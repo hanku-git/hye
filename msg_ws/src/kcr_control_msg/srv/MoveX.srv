@@ -1,0 +1,8 @@
+float64[] x_target
+float64 xd_target
+float64 xdd_target
+float64 q_redundant
+bool is_relative
+bool is_base_frame
+---
+uint32 error

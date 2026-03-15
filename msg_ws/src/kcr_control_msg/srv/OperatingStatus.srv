@@ -1,0 +1,4 @@
+bool is_path_finish
+bool is_assembly_finish
+---
+bool flag

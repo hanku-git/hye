@@ -1,0 +1,48 @@
+{
+  "object_name": "example_bolt",
+  "bin_name": "example_bin",
+  "gripper_name": "default_gripper",
+  "shape_name": "cylinder",
+  "grasp_type": "top",
+  
+  "alignment": {
+    "do_quick_align": true,
+    "quick_align_max_correspondence_distance": 0.05,
+    "quick_align_iteration": 1000,
+    "quick_align_sample_num": 4,
+    "icp_corr_threshold": 0.05,
+    "icp_max_iter_inner": 50,
+    "icp_max_iter_outer": 10,
+    "icp_transformation_eps": 0.001,
+    "icp_euclidean_fitness_eps": 0.001
+  },
+  
+  "filtering": {
+    "do_euclidean_filtering": true,
+    "euclidean_cluster_tolerance": 0.01,
+    "euclidean_cluster_min_size": 100,
+    "euclidean_cluster_max_size": 25000,
+    "do_statistical_filtering": false,
+    "statistical_filter_param_K": 50,
+    "statistical_filter_param_std": 1.0
+  },
+  
+  "voxel": {
+    "map_voxel_length": 0.001,
+    "cad_raw_voxel_filter_size": 0.001,
+    "cad_quick_align_voxel_filter_size": 0.005
+  },
+  
+  "view_frustum": [-1.0, 1.0, -1.0, 1.0, 0.0, 2.0],
+  
+  "bin_bounding_box": [-0.5, 0.5, -0.5, 0.5, 0.0, 0.5],
+  
+  "collision": {
+    "enabled": true,
+    "threshold": 100,
+    "threshold_escape": 50
+  },
+  
+  "matching_accuracy_limit": 50.0
+}
+

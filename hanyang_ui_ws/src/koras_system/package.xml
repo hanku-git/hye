@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package format="3">
+  <name>hanyang_eng_koras_system</name>
+  <version>2.0.1</version>
+  <description>TODO: Package description</description>
+  <maintainer email="koras@korasrobotics.com">jangwon</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>kcr_control_msg</depend>
+  <depend>dsr_msgs2</depend>
+  <depend>grp_control_msg</depend>
+  <depend>hanyang_matching_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>urdf</depend>
+  <depend>cv_bridge</depend> <!-- cv_bridge 추가 -->
+  <depend>opencv</depend> <!-- opencv 추가 -->
+
+  <depend>tf2_msgs</depend>
+
+  <depend>rviz_common</depend>
+  <depend>rviz_default_plugins</depend>
+  <depend>rviz_ogre_vendor</depend>
+  <depend>rviz_rendering</depend>
+
+  <exec_depend>libssl-dev</exec_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

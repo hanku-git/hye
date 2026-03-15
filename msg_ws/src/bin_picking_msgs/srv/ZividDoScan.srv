@@ -1,0 +1,31 @@
+bool scan
+bool do_save_data
+bool do_image_processing
+bool do_single_matching
+bool do_save_mrcnn_learning_data
+bool do_load_data
+bool do_scan_sampling
+bool do_robot_calibration
+int32 sampling_num
+int32 cal_scan_num
+bool is_base_frame_unknown
+
+int32 target_id
+string target_name
+string cal_save_folder_name
+float64[] scan_position
+bool skip_detection_mask
+bool is_mask_pixel_fixed
+int32 mask_pixel_x
+int32 mask_pixel_y
+int32 mask_pixel_scale_x
+int32 mask_pixel_scale_y
+int32 learning_data_idx
+
+float64[] robot_dh_parameters
+float64[] robot_tcp_default
+float64[] robot_tcp
+
+---
+bool is_detected
+bool is_saved

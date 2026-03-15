@@ -1,0 +1,6 @@
+float64[] pose
+float64 max_velocity
+float64 acceleration
+bool relative
+int8 operatingmode
+---

@@ -1,0 +1,6 @@
+bool enable
+float64[] force_limit
+float64[] stiffness
+float64[] nf
+float64[] zeta
+---

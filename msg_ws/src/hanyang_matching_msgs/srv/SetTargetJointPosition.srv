@@ -1,0 +1,6 @@
+float64[] joint_position
+float64 max_velocity
+float64 acceleration
+bool relative
+int8 operatingmode
+---

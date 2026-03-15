@@ -1,0 +1,5 @@
+bool setting_mode
+bool[] dtc_mode
+float64[] dtc_input
+---
+bool flag

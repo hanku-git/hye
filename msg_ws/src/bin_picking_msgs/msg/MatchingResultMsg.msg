@@ -1,0 +1,18 @@
+float64[] pose
+float64[] sub_pose
+float64[] zig_pose
+float64[] robot_camera_calibration_js_position
+float64[] robot_camera_calibration_t_b2s_global
+float64 approach_distance
+bool is_pose
+
+bool is_scanning_and_detection_finished
+bool is_detection_success
+bool is_open3d_processing_finished
+float64 matching_accuracy
+float64 matching_accuracy_limit
+bool is_grasping_pose_flipped
+uint16 gripper_open_length
+uint16 gripper_close_length
+int32 detected_mask_num
+uint16 gripper_tip_index

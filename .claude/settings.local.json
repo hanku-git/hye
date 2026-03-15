@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_matching_ws/src/hanyang_matching_process/CMakeLists.txt | head -80 && echo \"===\" && ls /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_matching_ws/src/ | xargs -I{} ls /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_matching_ws/src/{} 2>/dev/null | head -30)",
+      "Bash(grep -r \"barcode\\\\|keyence\\\\|Keyence\\\\|KEYENCE\\\\|qr\\\\|QR\\\\|scanner\\\\|barcod\" /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/ --include=\"*.py\" --include=\"*.cpp\" --include=\"*.hpp\" --include=\"*.h\" -l 2>/dev/null && echo \"===\" && grep -r \"keyring\\\\|drum\\\\|뚜껑\\\\|열기\\\\|닫기\\\\|open\\\\|close\" /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/ --include=\"*.py\" --include=\"*.cpp\" --include=\"*.hpp\" -l 2>/dev/null | head -20)",
+      "Bash(for d in 0923 0924 0925 0926 0929 1016 1017 1020 \"1020_매칭\" \"1021 할 일\")",
+      "Bash(do)",
+      "Bash(echo \"=== $d ===\")",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/other01/이슈 상황 및 사진/**)",
+      "Bash(done)",
+      "Bash(BASE=\"/media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/other02/msg_ws/src/hanyang_matching_msgs\")",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/srv/**)",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/msg/**)",
+      "Bash(BASE=\"/media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_ui_ws/src/koras_system/src/qnode.cpp\" echo \"=== SUBSCRIBERS ===\")",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/**)",
+      "Bash(BASE=\"/media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_ui_ws/src/koras_system/src/qnode.cpp\"\ngrep -n \"create_subscription\" \"$BASE\" | head -30)",
+      "Bash(BASE=\"/media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/msg_ws/src\")",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/grp_control_msg/srv/**)",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/grp_control_msg/msg/**)",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/kcr_control_msg/srv/**)",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/kcr_control_msg/msg/**)",
+      "Read(//media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/$BASE/**)",
+      "Bash(find /media/hanku/1bbc3839-6da8-4713-a264-4b48c4bd85f6/hye_ws/robot_a/main01/hanyang_matching_ws -name \"*.py\" 2>/dev/null | head -20)",
+      "Bash(dpkg -l | grep -i \"ros-humble\" 2>/dev/null | head -5)",
+      "Bash(sudo apt remove libdc1394-22-dev -y)",
+      "Bash(cd:*)",
+      "Bash(echo:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)"
+    ]
+  }
+}

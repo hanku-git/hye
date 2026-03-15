@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="hanyang_matching_process" exec="zivid_scan_node" name="zivid_scan2_node" output="screen"/>
+  <node pkg="hanyang_matching_process" exec="matching_node" name="matching_node" output="screen"/>
+</launch>

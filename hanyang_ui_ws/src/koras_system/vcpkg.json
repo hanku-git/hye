@@ -1,0 +1,9 @@
+{    
+    "name": "QtNodes",
+    "version": "0.0.1",
+    "dependencies": [
+      "fmt",
+      "pugixml",
+      "nlohmann-json"
+    ]
+  }

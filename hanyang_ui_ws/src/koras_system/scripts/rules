@@ -1,0 +1,125 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+# TODO: remove the LDFLAGS override.  It's here to avoid esoteric problems
+# of this sort:
+#  https://code.ros.org/trac/ros/ticket/2977
+#  https://code.ros.org/trac/ros/ticket/3842
+export LDFLAGS=
+export PKG_CONFIG_PATH=/opt/ros/humble/lib/pkgconfig
+# Explicitly enable -DNDEBUG, see:
+# 	https://github.com/ros-infrastructure/bloom/issues/327
+export DEB_CXXFLAGS_MAINT_APPEND=-DNDEBUG
+ifneq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
+	BUILD_TESTING_ARG=-DBUILD_TESTING=OFF
+endif
+
+DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+
+%:
+	dh $@ -v --buildsystem=cmake --builddirectory=.obj-$(DEB_HOST_GNU_TYPE)
+
+override_dh_auto_configure:
+	# 로그 출력 추가
+	echo "Running dh_auto_configure"
+	# In case we're installing to a non-standard location, look for a setup.sh
+	# in the install tree and source it.  It will set things like
+	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+	if [ -f "/opt/ros/humble/setup.sh" ]; then . "/opt/ros/humble/setup.sh"; fi && \
+	dh_auto_configure -- \
+		-DCMAKE_INSTALL_PREFIX="/opt/ros/humble" \
+		-DAMENT_PREFIX_PATH="/opt/ros/humble" \
+		-DCMAKE_PREFIX_PATH="/opt/ros/humble" \
+		-DCMAKE_BUILD_TYPE=Release \
+		$(BUILD_TESTING_ARG) || (cat $(CURDIR)/.obj-$(DEB_HOST_GNU_TYPE)/CMakeFiles/CMakeError.log; exit 1)
+
+
+override_dh_auto_build:
+	# 로그 출력 추가
+	echo "Running dh_auto_build"
+	# In case we're installing to a non-standard location, look for a setup.sh
+	# in the install tree and source it.  It will set things like
+	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+	if [ -f "/opt/ros/humble/setup.sh" ]; then . "/opt/ros/humble/setup.sh"; fi && \
+	dh_auto_build
+
+override_dh_auto_test:
+	# In case we're installing to a non-standard location, look for a setup.sh
+	# in the install tree and source it.  It will set things like
+	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+	echo -- Running tests. Even if one of them fails the build is not canceled.
+	if [ -f "/opt/ros/humble/setup.sh" ]; then . "/opt/ros/humble/setup.sh"; fi && \
+	dh_auto_test || true
+
+override_dh_shlibdeps:
+	# In case we're installing to a non-standard location, look for a setup.sh
+	# in the install tree and source it.  It will set things like
+	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+	if [ -f "/opt/ros/humble/setup.sh" ]; then . "/opt/ros/humble/setup.sh"; fi && \
+	dh_shlibdeps -l$(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/:$(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/opt/hanyang_eng_koras_system/lib/
+
+override_dh_auto_install:
+	# In case we're installing to a non-standard location, look for a setup.sh
+	# in the install tree and source it.  It will set things like
+	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+	if [ -f "/opt/ros/humble/setup.sh" ]; then . "/opt/ros/humble/setup.sh"; fi && \
+	dh_auto_install
+	# 서명 파일 생성
+	echo "Creating signature file"
+	install_dir=$(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system
+	exe_file=$(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys
+	sig_file=$(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/share/hanyang_eng_koras_system/example.sig
+	priv_key=$(CURDIR)/private_key.pem
+
+	# 경로 디버깅
+	echo "Looking for private key at: $(CURDIR)/private_key.pem"
+	echo "Looking for executable at: $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys"
+
+	@if [ ! -f $(CURDIR)/private_key.pem ]; then \
+	    echo "Private key file not found: $(CURDIR)/private_key.pem"; \
+	    exit 1; \
+	fi
+
+	@if [ ! -f $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys ]; then \
+	    echo "Executable file not found: $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys"; \
+	    exit 1; \
+	fi
+
+	@if [ ! -d $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/share/hanyang_eng_koras_system ]; then \
+	    mkdir -p $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/share/hanyang_eng_koras_system; \
+	fi
+
+	# 서명 생성
+	echo "Generating signature"
+	openssl dgst -sha256 -sign $(CURDIR)/private_key.pem -out $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/share/hanyang_eng_koras_system/example.sig $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys
+	@if [ $$? -ne 0 ]; then \
+	    echo "Signature creation failed."; \
+	    exit 1; \
+	fi
+
+	# 서명 검증 디버깅
+	echo "Verifying signature"
+	openssl dgst -sha256 -verify $(CURDIR)/public.pem -signature $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/share/hanyang_eng_koras_system/example.sig $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys
+	@if [ $$? -ne 0 ]; then \
+	    echo "Signature verification failed."; \
+	    exit 1; \
+	fi
+
+override_dh_fixperms:
+	# 로그 출력 추가
+	echo "Running dh_fixperms"
+	# Fix the permissions of installed files to ensure they are executable
+	dh_fixperms
+	chmod +x $(CURDIR)/debian/ros-humble-bp-gui/opt/ros/humble/lib/hanyang_eng_koras_system/kr_sys
+
+override_dh_strip:
+	# 스트립 비활성화
+	echo "Disabling dh_strip"
+

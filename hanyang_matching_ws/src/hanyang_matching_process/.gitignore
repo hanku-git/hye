@@ -1,0 +1,17 @@
+# 빌드 결과물 제외
+/build/
+*.log
+*.tmp
+*.zip
+/.vscode
+
+# 환경 설정 파일 제외
+.env
+
+# 개별 파일 무시
+CMakeLists.txt
+
+# 특정 디렉터리 및 하위 파일 무시
+#robot_control_config/ui_config/.vscode/
+
+

@@ -1,0 +1,85 @@
+__version__:
+    serializer: 1
+    data: 20
+Settings:
+    Acquisitions:
+        - Acquisition:
+              Aperture: 2.89
+              Brightness: 2.5
+              ExposureTime: 41667
+              Gain: 1
+        - Acquisition:
+              Aperture: 2.98
+              Brightness: 2.5
+              ExposureTime: 16667
+              Gain: 1
+        - Acquisition:
+              Aperture: 3.65
+              Brightness: 2.5
+              ExposureTime: 8333
+              Gain: 1
+    Diagnostics:
+        Enabled: no
+    Experimental:
+        Engine: stripe
+    Processing:
+        Color:
+            Balance:
+                Blue: 1
+                Green: 1
+                Red: 1
+            Experimental:
+                Mode: automatic
+            Gamma: 1
+        Filters:
+            Cluster:
+                Removal:
+                    Enabled: yes
+                    MaxNeighborDistance: 5
+                    MinArea: 200
+            Experimental:
+                ContrastDistortion:
+                    Correction:
+                        Enabled: yes
+                        Strength: 0.3
+                    Removal:
+                        Enabled: no
+                        Threshold: 0.1
+                HoleFilling:
+                    Enabled: yes
+                    HoleSize: 0.1
+                    Strictness: 4
+            Noise:
+                Removal:
+                    Enabled: yes
+                    Threshold: 2
+                Suppression:
+                    Enabled: no
+                Repair:
+                    Enabled: yes
+            Outlier:
+                Removal:
+                    Enabled: yes
+                    Threshold: 10
+            Reflection:
+                Removal:
+                    Enabled: yes
+                    Experimental:
+                        Mode: global
+            Smoothing:
+                Gaussian:
+                    Enabled: yes
+                    Sigma: 1
+    RegionOfInterest:
+        Box:
+            Enabled: yes
+            Extents: [-350, -200]
+            PointA: [185.582642, -104.334312, 1330.48938]
+            PointB: [-364.151733, 298.863312, 1193.19824]
+            PointO: [-386.548004, -100.43029, 1317.75549]
+        Depth:
+            Enabled: no
+            Range: [800, 1100]
+    Sampling:
+        Color: rgb
+        Pixel: blueSubsample2x2

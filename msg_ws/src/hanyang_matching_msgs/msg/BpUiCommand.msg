@@ -1,0 +1,10 @@
+float64[] meas_js_angle
+float64[] meas_cs_pose
+float64[] meas_cs_vel
+float64[] est_acc
+float64[] meas_force_sensor
+float64[] meas_force_tool
+float64[] meas_force_task
+uint16 mode
+uint16 data_idx
+uint16 gripper_state
