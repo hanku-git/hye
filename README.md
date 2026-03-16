@@ -1,1 +1,3 @@
-# hye
+- hanyang_ui_ws/src/robot_control_config/ui_config/ui_define.hpp 
+    - 가상 환경 : #define IS_PLC_COMMUNICATION false
+    - 실제 환경 : #define IS_PLC_COMMUNICATION true
