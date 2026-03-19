@@ -834,8 +834,8 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunRobotController() {
     QMap<QString, QString> command_list = {
         {"Universal Robots UR10e", "source ~/robot_control_ws/install/setup.bash && ros2 run ur10e_controller ur10e_controller 192.168.0.12"},
         {"Fairino FR5", "source ~/robot_control_ws/install/setup.bash && export LD_LIBRARY_PATH=~/robot_control_ws/src/fr5_control_package/fr_controller/include/fr_controller/libfairino/lib/libfairino:$LD_LIBRARY_PATH && ros2 run fr_controller fr_controller"},
-        {"Doosan M1013", "source ~/doosan_ros2_ws/install/setup.bash && ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=real host:=192.168.100.108 port:=12345 model:=m1013 gui:=false"},
-        {"Doosan E0509", "source ~/doosan_ros2_ws/install/setup.bash && ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=real host:=192.168.100.108 port:=12345 model:=e0509"}
+        {"Doosan M1013", "source $ROBOT_BASE_DIR/doosan_ros2_ws/install/setup.bash && ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=virtual host:=127.0.0.1 port:=12345 model:=m1013 gui:=false"},
+        {"Doosan E0509", "source $ROBOT_BASE_DIR/doosan_ros2_ws/install/setup.bash && ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=virtual host:=127.0.0.1 port:=12345 model:=e0509"}
     };
 
     runGenericNode(
@@ -849,7 +849,7 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunRobotController() {
 }
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunGripperNode() {
     QMap<QString, QString> command_list = {
-        {"Koras Gripper", "source ~/gripper_ws/install/setup.bash && ros2 run kr_gcs_ui kr_gcs_ui --no-ui"}
+        {"Koras Gripper", "source $ROBOT_BASE_DIR/gripper_ws/install/setup.bash && ros2 run kr_gcs_ui kr_gcs_ui --no-ui"}
     };
     runGenericNode(
         gripperNodeProcess,
@@ -864,10 +864,10 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunGripperNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRun3DScannerNode() {
     QMap<QString, QString> command_list = {
-        {"[Scanner Type] Zivid2+ MR60", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_zivid_scanner_node zivid_topic_node.py"},
-        {"[Scanner Type] Zivid2+ M130", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_zivid_scanner_node zivid_topic_node.py"},
-        {"[Scanner Type] Rvbust RVC I2370", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run scanner_node zivid2mr60_topic_node.py"},
-        {"[Scanner Type] Rvbust RVC P31300", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run scanner_node zivid2mr60_topic_node.py"}
+        {"[Scanner Type] Zivid2+ MR60", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_zivid_scanner_node zivid_topic_node.py"},
+        {"[Scanner Type] Zivid2+ M130", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_zivid_scanner_node zivid_topic_node.py"},
+        {"[Scanner Type] Rvbust RVC I2370", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run scanner_node zivid2mr60_topic_node.py"},
+        {"[Scanner Type] Rvbust RVC P31300", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run scanner_node zivid2mr60_topic_node.py"}
     };
 
     runGenericNode(
@@ -883,8 +883,8 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRun3DScannerNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunMaskDetectionNode() {
     QMap<QString, QString> command_list = {
-        {"AI Module (SAM)", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_sam_node sam_node.py"},
-        {"No AI Module", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_sam_node sam_node.py"}
+        {"AI Module (SAM)", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_sam_node sam_node.py"},
+        {"No AI Module", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_sam_node sam_node.py"}
     };
 
     runGenericNode(
@@ -899,7 +899,7 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunMaskDetectionNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunRvizViewNode() {
     QMap<QString, QString> command_list = {
-        {"Visualize all", "source ~/hanyang_matching_ws/install/setup.bash && ros2 launch hanyang_matching_visualizer visualize_zvd_cad_grasp.xml"}
+        {"Visualize all", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 launch hanyang_matching_visualizer visualize_zvd_cad_grasp.xml"}
     };
 
     runGenericNode(
@@ -914,10 +914,10 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunRvizViewNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunScanNode() {
     QMap<QString, QString> command_list = {
-        {"[Scan Node] Zivid2+ MR60", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process zivid_scan_node"},
-        {"[Scan Node] Zivid2+ M130", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process zivid_scan_node"},
-        {"[Scan Node] Rvbust RVC I2370", "source ~/bin_picking_ws/install/setup.bash && ros2 run bin_picking_process zivid_scan_node"},
-        {"[Scan Node] Rvbust RVC P31300", "source ~/bin_picking_ws/install/setup.bash && ros2 run bin_picking_process zivid_scan_node"}
+        {"[Scan Node] Zivid2+ MR60", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process zivid_scan_node"},
+        {"[Scan Node] Zivid2+ M130", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process zivid_scan_node"},
+        {"[Scan Node] Rvbust RVC I2370", "source $ROBOT_BASE_DIR/bin_picking_ws/install/setup.bash && ros2 run bin_picking_process zivid_scan_node"},
+        {"[Scan Node] Rvbust RVC P31300", "source $ROBOT_BASE_DIR/bin_picking_ws/install/setup.bash && ros2 run bin_picking_process zivid_scan_node"}
     };
 
     runGenericNode(
@@ -932,7 +932,7 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunScanNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunMatchingNode() {
     QMap<QString, QString> command_list = {
-        {"Matching", "source ~/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process matching_node"}
+        {"Matching", "source $ROBOT_BASE_DIR/hanyang_matching_ws/install/setup.bash && ros2 run hanyang_matching_process matching_node"}
     };
 
     runGenericNode(
@@ -947,7 +947,7 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunMatchingNode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunKeyCode() {
     QMap<QString, QString> command_list = {
-        {"none", "source ~/keycode_ws/install/setup.bash && ros2 run keyring_detection detect_red_dot_node_for_drum"}
+        {"none", "source $ROBOT_BASE_DIR/keycode_ws/install/setup.bash && ros2 run keyring_detection detect_red_dot_node_for_drum"}
     };
 
     runGenericNode(
@@ -962,7 +962,7 @@ void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunKeyCode() {
 
 void MainWindow_widgetsHanyangLaunchPackage::pushButtonRunKeyCodeHolder() {
     QMap<QString, QString> command_list = {
-        {"none", "source ~/keycode_ws/install/setup.bash && ros2 run keyring_detection detect_red_dot_node_for_holder"}
+        {"none", "source $ROBOT_BASE_DIR/keycode_ws/install/setup.bash && ros2 run keyring_detection detect_red_dot_node_for_holder"}
     };
 
     runGenericNode(
