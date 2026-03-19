@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
+import os
 import rclpy
 import zivid
 import numpy as np
 from rclpy.node import Node
+
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
 from cv_bridge import CvBridge
 
 from sensor_msgs.msg import Image
@@ -21,7 +24,7 @@ class ZividCapture(Node):
         self.camera = app.connect_camera()
 
         print("Configuring 3D settings")
-        self.settings = zivid.Settings.load("/root/zivid_ws/config/Zivid2+_Settings_Zivid_Two_Plus_M130_ManufacturingSpecular_60Hz.yml")
+        self.settings = zivid.Settings.load(BASE_DIR + "/zivid_ws/config/Zivid2+_Settings_Zivid_Two_Plus_M130_ManufacturingSpecular_60Hz.yml")
 
         self.srv = self.create_service(Empty, 'zivid/capture', self.capture_callback)
         self.img_pub = self.create_publisher(Image, 'zivid/color/image_color', 1)

@@ -24,8 +24,9 @@ from hanyang_matching_msgs.msg import Resultsam
 from hanyang_matching_msgs.msg import BpUiCommandLearning
 
 
-IMGPATH = "/home/korasrobotics/[zivid_scan_data]/"
-sam_checkpoint = "/home/korasrobotics/[sam_weight]/sam_vit_h_4b8939.pth"
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
+IMGPATH = BASE_DIR + "/[zivid_scan_data]/"
+sam_checkpoint = BASE_DIR + "/[sam_weight]/sam_vit_h_4b8939.pth"
 model_type = "vit_h"
 device = "cuda"
 test = False
@@ -76,7 +77,7 @@ class SamNode(object):
         self.overlap_pair = []        
 
     def setSamParameters(self):
-        with open ("/home/korasrobotics/sam_ws/src/sam_ros/config/sam_config.json", "r") as f:
+        with open (BASE_DIR + "/sam_ws/src/sam_ros/config/sam_config.json", "r") as f:
             self.sam_config = json.load(f)
             print("-------------------\n")
             print("--- sam_config ----\n")

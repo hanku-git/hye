@@ -9,6 +9,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'models'))
 from model_128_hinge import HingeClassifier
 from model_hinge_angle import HingeAngleModel
 
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
+
 def load_model(model_class, weights_path, device):
     model = model_class()
     model.to(device)
@@ -20,8 +22,8 @@ class HingeModel():
     def __init__(self):
         # Load models
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.MCmodel = load_model(HingeClassifier, "/home/korasrobotics/sam_ws/src/sam_ros/weight/hinge_mc_weights.pth", self.device)
-        self.Anglemodel = load_model(HingeAngleModel, "/home/korasrobotics/sam_ws/src/sam_ros/weight/hinge_angle_weights.pth", self.device)
+        self.MCmodel = load_model(HingeClassifier, BASE_DIR + "/sam_ws/src/sam_ros/weight/hinge_mc_weights.pth", self.device)
+        self.Anglemodel = load_model(HingeAngleModel, BASE_DIR + "/sam_ws/src/sam_ros/weight/hinge_angle_weights.pth", self.device)
 
     def preprocess_image(self, image, mask, target_size=(128, 128)):
 

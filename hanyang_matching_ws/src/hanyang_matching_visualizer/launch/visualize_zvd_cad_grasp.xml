@@ -1,12 +1,12 @@
 <launch>
-    <let name="rviz_config1" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/camera_view_zvd_grasp.rviz"/>
-    <let name="rviz_config2" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/matching_results_with_CAD.rviz"/>
-    <!-- <let name="rviz_config3" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/pre_matching_results_with_CAD.rviz"/>
-    <let name="rviz_config4" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/pre_matching_results.rviz"/> -->
-    <let name="rviz_config5" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/segmentation_results.rviz"/>
-    <!-- <let name="rviz_config6" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/octomap_results.rviz"/>
-    <let name="rviz_config7" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/calibration_view.rviz"/> -->
-    <let name="rviz_config8" value="/home/korasrobotics/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/raw_view.rviz"/>
+    <let name="rviz_config1" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/camera_view_zvd_grasp.rviz"/>
+    <let name="rviz_config2" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/matching_results_with_CAD.rviz"/>
+    <!-- <let name="rviz_config3" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/pre_matching_results_with_CAD.rviz"/>
+    <let name="rviz_config4" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/pre_matching_results.rviz"/> -->
+    <let name="rviz_config5" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/segmentation_results.rviz"/>
+    <!-- <let name="rviz_config6" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/octomap_results.rviz"/>
+    <let name="rviz_config7" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/calibration_view.rviz"/> -->
+    <let name="rviz_config8" value="$(env ROBOT_BASE_DIR)/hanyang_matching_ws/src/hanyang_matching_visualizer/rviz/raw_view.rviz"/>
     <node pkg="rviz2" exec="rviz2" name="rviz2_v1" args="-d $(var rviz_config1)"/>
     <node pkg="rviz2" exec="rviz2" name="rviz2_v2" args="-d $(var rviz_config2)"/>
     <!-- <node pkg="rviz2" exec="rviz2" name="rviz2_v3" args="-d $(var rviz_config3)"/>

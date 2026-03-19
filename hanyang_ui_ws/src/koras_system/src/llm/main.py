@@ -4,7 +4,8 @@ from std_msgs.msg import String
 from llm_node.ros_setup import LLMNode
 from llm_node.model_kiwi import STTModel, KIWIModel
 
-filepath = "/home/bp/llm_ws/src/record/"
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
+filepath = BASE_DIR + "/llm_ws/src/record/"
 rec_file = os.path.join(filepath, "recording.wav")
 
 def main(args=None):

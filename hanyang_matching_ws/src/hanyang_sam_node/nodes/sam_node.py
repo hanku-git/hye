@@ -34,10 +34,10 @@ import json
 from torchvision import transforms
 from model import MaskClassifier
 
-username_ = os.getenv("USER")
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
 
-IMGPATH = "/home/" + username_ + "/[zivid_scan_data]/"
-sam_checkpoint = "/home/" + username_ + "/[sam_weight]/sam_vit_h_4b8939.pth"  # sam_vit_h_4b8939 sam_vit_b_01ec64
+IMGPATH = BASE_DIR + "/[zivid_scan_data]/"
+sam_checkpoint = BASE_DIR + "/[sam_weight]/sam_vit_h_4b8939.pth"  # sam_vit_h_4b8939 sam_vit_b_01ec64
 model_type = "vit_h"
 device = "cuda"
 test = False

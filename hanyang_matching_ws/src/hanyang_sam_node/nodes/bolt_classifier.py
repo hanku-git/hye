@@ -10,10 +10,12 @@ from sklearn.decomposition import PCA
 sys.path.append(os.path.join(os.path.dirname(__file__), 'models'))
 from model_128_bolt import BoltClassifier
 
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
+
 class BoltModel():
     def __init__(self):
         self.BCmodel = BoltClassifier()
-        self.BCmodel.load_state_dict(torch.load("/home/korasrobotics/sam_ws/src/sam_ros/weight/240808_bolt_1000.pth")['model_state_dict'])
+        self.BCmodel.load_state_dict(torch.load(BASE_DIR + "/sam_ws/src/sam_ros/weight/240808_bolt_1000.pth")['model_state_dict'])
         self.BCmodel.eval()
 
     def extract_rgb_masks(self, image, masks):

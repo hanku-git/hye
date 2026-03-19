@@ -18,6 +18,7 @@ from bin_picking_msgs.msg import ScanCommandMsg
 # https://github.com/Box-Robotics/ros2_numpy
 import ros2_numpy
 
+BASE_DIR = os.environ.get("ROBOT_BASE_DIR", os.path.expanduser("~"))
 SCANNER_MODEL = "zivid2_mr"
 class ZividCaptureNode(Node):
 
@@ -31,7 +32,7 @@ class ZividCaptureNode(Node):
         print("Connecting to camera")
         self.camera = app.connect_camera()
         print("Configuring 3D settings")
-        self.settings = zivid.Settings.load("/home/korasrobotics/zivid_ws/config/" + SCANNER_MODEL + "/scan_settings_default.yml")
+        self.settings = zivid.Settings.load(BASE_DIR + "/zivid_ws/config/" + SCANNER_MODEL + "/scan_settings_default.yml")
         self.img_pub = self.create_publisher(Image, '/zivid/color/image_color', 1)
         self.cloud_pub = self.create_publisher(PointCloud2, '/zivid/points/xyzrgba', 1)
         print("...")
@@ -50,13 +51,13 @@ class ZividCaptureNode(Node):
 
     def setScanSetting(self):
         print("Configuring 3D settings")
-        filename = "/home/korasrobotics/zivid_ws/config/" + SCANNER_MODEL  + "/scan_settings_" + self._target_name + ".yml"
+        filename = BASE_DIR + "/zivid_ws/config/" + SCANNER_MODEL  + "/scan_settings_" + self._target_name + ".yml"
         if os.path.exists(filename):
             self.settings = zivid.Settings.load(filename)
             print(filename)
             print('Scan Setting loaded! (object: ' + self._target_name + ', Scanner: '+ SCANNER_MODEL + ')')
         else:
-            self.settings = zivid.Settings.load("/home/korasrobotics/zivid_ws/config/" + SCANNER_MODEL + "/scan_settings_default.yml")
+            self.settings = zivid.Settings.load(BASE_DIR + "/zivid_ws/config/" + SCANNER_MODEL + "/scan_settings_default.yml")
             print(filename)
             print('Scan Setting loaded! (object: unknown' + ', Scanner: '+ SCANNER_MODEL + ')')
 

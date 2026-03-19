@@ -115,41 +115,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PATH="$HOME/.local/bin:$PATH"
 
-export PATH=/usr/local/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/hanku/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/hanku/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/hanku/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/hanku/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH=$PATH:/opt/xtensa-esp-elf/bin/
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export CUDA_HOME=/usr/local/cuda-11.8
-
-
-# ===== Robot System (main01) =====
+# ===== Robot System =====
 source /opt/ros/humble/setup.bash
-                                                                                       
-WS=/home/hanku/ws/hye_ws/robot_a/main01
 
-# Workspace source
+export ROBOT_BASE_DIR="$HOME/hye"
+WS=$ROBOT_BASE_DIR
+
 source $WS/doosan_ros2_ws/install/setup.bash
 source $WS/msg_ws/install/setup.bash
 source $WS/ros2_numpy_ws/install/setup.bash
@@ -160,36 +133,20 @@ source $WS/zivid_ws/install/setup.bash
 source $WS/keycode_ws/install/setup.bash
 source $WS/hanyang_ui_ws/install/setup.bash
 
-# Build alias
 alias cb='colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release'
 alias cb_clean='sudo rm -r install log build'
 alias sb='source ~/.bashrc'
 alias br='sudo gedit ~/.bashrc'
-
-# Robot
 alias dscontroller='ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=real host:=192.168.100.108 port:=12345 model:=m1013 gui:=false'
 alias vcontroller='ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=virtual host:=127.0.0.1 port:=12345 model:=m1013'
-
-# Gripper
 alias grip='sudo chmod a+rw /dev/ttyUSB0 && ros2 launch grp_control slave1.xml'
-
-# Vision
 alias zvd='ros2 run hanyang_zivid_scanner_node zivid_topic_node.py'
 alias sam='ros2 run hanyang_sam_node sam_node.py'
 alias vis='ros2 launch hanyang_matching_visualizer visualize_zvd_cad_grasp.xml'
 alias mc='ros2 run hanyang_matching_process matching_node'
-
-# Keycode
 alias keycode1='cd $WS/keycode_ws/src/keyring_detection/keyring_detection && python3 detect_red_dot_node_for_drum.py'
 alias keycode2='cd $WS/keycode_ws/src/keyring_detection/keyring_detection && python3 detect_red_dot_node_for_holder.py'
-
-# UI
 alias ui='ros2 run hanyang_eng_koras_system kr_sys HANYANG_LAUNCH'
-
-# Docker emulator
 alias dsr_emu_start='docker run -dit --rm --name dsr01_emulator -p 12345:12345 doosanrobot/dsr_emulator:3.0.1'
 alias dsr_emu_stop='docker stop dsr01_emulator'
-
-# Plot
 alias plot='ros2 run plotjuggler plotjuggler'
-
