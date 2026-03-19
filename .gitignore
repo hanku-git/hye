@@ -55,3 +55,6 @@ rosout.log
 # Environment
 .env
 *.env
+
+# Claude Code
+.claude/settings.local.json
