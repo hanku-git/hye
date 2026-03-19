@@ -22,7 +22,7 @@
 #include "module/data_class/optimization_data.h"
 
 #include "lpsolve/lp_lib.h"
-// #undef TIMEOUT
+#undef TIMEOUT
 
 /**
 * @class COPTIMODULE

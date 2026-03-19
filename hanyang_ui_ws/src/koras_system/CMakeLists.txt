@@ -832,7 +832,7 @@ endif()
 #        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT headers)
 
 # 라이브러리 설치 및 심볼릭 링크 설정
-set(DRFL_LIB_DIR /home/${USERNAME}/ws/hye_ws/robot_a/main01/doosan_ros2_ws/src/doosan-robot2/common2)
+set(DRFL_LIB_DIR $ENV{ROBOT_BASE_DIR}/doosan_ros2_ws/src/doosan-robot2/common2)
 install(FILES
 ${DRFL_LIB_DIR}/lib/humble/x86_64/libDRFL.a
 ${DRFL_LIB_DIR}/include/DRFL.h
