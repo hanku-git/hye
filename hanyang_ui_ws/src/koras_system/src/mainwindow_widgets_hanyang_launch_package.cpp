@@ -181,7 +181,9 @@ MainWindow_widgetsHanyangLaunchPackage::MainWindow_widgetsHanyangLaunchPackage(M
          }
      });
 
-    // 순차적 버튼 클릭을 위한 타이머 설정 (프로그레스와 함께)
+    // 순차적 버튼 클릭을 위한 타이머 설정
+#if IS_PLC_COMMUNICATION
+    // REAL 모드: 기존 타이밍 그대로
     QTimer::singleShot(8000, this, [this]() {
         setupProgressDialog->setLabelText("Stopping Robot...");
         setupProgressDialog->setValue(70);
@@ -215,7 +217,6 @@ MainWindow_widgetsHanyangLaunchPackage::MainWindow_widgetsHanyangLaunchPackage(M
         setupProgressDialog->setValue(95);
         ui->pushButton_auto_mode->click();
         ROS_LOG_WARN("[%s] Auto mode button auto-clicked", __func__);
-
     });
 
     QTimer::singleShot(18000, this, [this]() {
@@ -226,8 +227,6 @@ MainWindow_widgetsHanyangLaunchPackage::MainWindow_widgetsHanyangLaunchPackage(M
         setupProgressDialog->setLabelText("Setting Auto Mode...");
         setupProgressDialog->setValue(100);
         ui->pushButton_stop->click();
-
-        // 완료 후 다이얼로그 닫기
         QTimer::singleShot(1000, this, [this]() {
             if (setupProgressDialog) {
                 setupProgressDialog->close();
@@ -237,6 +236,36 @@ MainWindow_widgetsHanyangLaunchPackage::MainWindow_widgetsHanyangLaunchPackage(M
             ROS_LOG_WARN("[%s] Robot Auto Setup completed successfully", __func__);
         });
     });
+#else
+    // SIM 모드: ToolWeight/TCP 스킵, 타이밍 단축
+    QTimer::singleShot(3000, this, [this]() {
+        setupProgressDialog->setLabelText("Stopping Robot...");
+        setupProgressDialog->setValue(70);
+        ui->pushButton_stop->click();
+        ROS_LOG_WARN("[%s] Stop button auto-clicked", __func__);
+    });
+
+    QTimer::singleShot(4000, this, [this]() {
+        setupProgressDialog->setLabelText("Setting Auto Mode...");
+        setupProgressDialog->setValue(95);
+        ui->pushButton_auto_mode->click();
+        ROS_LOG_WARN("[%s] Auto mode button auto-clicked", __func__);
+    });
+
+    QTimer::singleShot(5000, this, [this]() {
+        bringUIToFront();
+        setupProgressDialog->setLabelText("Setup Complete");
+        setupProgressDialog->setValue(100);
+        QTimer::singleShot(500, this, [this]() {
+            if (setupProgressDialog) {
+                setupProgressDialog->close();
+                delete setupProgressDialog;
+                setupProgressDialog = nullptr;
+            }
+            ROS_LOG_WARN("[%s] Robot Auto Setup completed successfully", __func__);
+        });
+    });
+#endif
 
     // Robot ON/OFF 버튼 연결
     QObject::connect(ui->pushButton_RobotON, &QPushButton::clicked, [this]() {
