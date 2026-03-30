@@ -1,0 +1,29 @@
+● 세션 시작 순서                                                                                                  
+                                         
+  1. Isaac Sim 실행                                                                                               
+  # Isaac Sim 별도 터미널에서 실행                                                                                
+  ~/isaacsim/isaac-sim.sh                                                                                         
+                                                            
+  2. USD 씬 열기                                                                                                  
+  - File → Open → ~/hye/isaac_bridge_ws/isaac_sim/isaacsim_m1013.usd
+                                                                                                                  
+  3. Play 버튼 누르기 (▶)                                   
+                                                                                                                  
+  4. Script Editor에서 FileWatcher 실행                     
+  - Window → Script Editor                                                                                        
+  - File → Open → ~/hye/isaac_bridge_ws/isaac_sim/isaacsim_filewatcher.py                                         
+  - Run 버튼 클릭                                                        
+  - 콘솔에 FileWatcher ready - smooth interpolation at sim rate 확인                                              
+                                                                                                                  
+  5. Bridge Node 실행 (새 터미널)                                                                                 
+  run_bridge                                                                                                      
+  - DSR Isaac Bridge started 확인                                                                                 
+                                                                                                                  
+  6. UI 실행 (새 터미널)                                                                                          
+  ui
+                                                                                                                  
+  ---                                                       
+  ▎ 주의: Play(▶) 누르기 전에 FileWatcher 실행하면 로봇 초기화 실패.                                              
+  ▎ Play → FileWatcher 순서 지켜야 함.                                                                            
+                                                                                                                  
+  ▎ Play/Stop 반복 시: Stop 후 다시 Play하면 FileWatcher 재실행 필요 (Step 4 반복).   
