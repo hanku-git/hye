@@ -78,10 +78,11 @@ def read_ply(path, stride=1):
 
 
 # ── Isaac Sim 포인트클라우드 Prim 생성 ───────────────────────────
-def add_pointcloud(prim_path, xyz_m, rgb):
+def add_pointcloud(prim_path, xyz_m, rgb, override_color=None):
     """
     UsdGeom.Points로 포인트클라우드 생성
-    xyz_m: PLY 로컬 좌표 (m), 월드 오프셋은 여기서 적용
+    xyz_m          : PLY 로컬 좌표 (m), 월드 오프셋은 여기서 적용
+    override_color : (r,g,b) 0.0~1.0  지정 시 PLY 색상 무시하고 단색 사용
     """
     if stage.GetPrimAtPath(prim_path):
         stage.RemovePrim(prim_path)
@@ -97,14 +98,17 @@ def add_pointcloud(prim_path, xyz_m, rgb):
     pts_prim.GetPointsAttr().Set(world_pts)
     pts_prim.GetWidthsAttr().Set(Vt.FloatArray([POINT_SIZE] * len(world_pts)))
 
-    # 꼭짓점 색상
-    colors = Vt.Vec3fArray([
-        Gf.Vec3f(float(c[0]), float(c[1]), float(c[2]))
-        for c in rgb
-    ])
+    # 색상: override_color 지정 시 단색, 아니면 PLY 스캔 색상
+    if override_color is not None:
+        r, g, b = override_color
+        colors = Vt.Vec3fArray([Gf.Vec3f(r, g, b)] * len(world_pts))
+    else:
+        colors = Vt.Vec3fArray([
+            Gf.Vec3f(float(c[0]), float(c[1]), float(c[2]))
+            for c in rgb
+        ])
     pts_prim.GetDisplayColorAttr().Set(colors)
 
-    # displayOpacity 인터폴레이션 설정
     pts_prim.GetPrim().CreateAttribute(
         "primvars:displayColor:interpolation",
         Sdf.ValueTypeNames.Token
@@ -124,13 +128,19 @@ if stage.GetPrimAtPath("/World/DrumModel"):
 UsdGeom.Xform.Define(stage, "/World/DrumModel")
 
 
+# ── 색상 정의 (실물 기준) ───────────────────────────────────────
+# 실물: 드럼 뚜껑 밝은 파란색, 캡 흰색
+COLOR_DRUM_LID  = (0.08, 0.35, 0.78)   # 밝은 파란색 (실물 드럼 뚜껑)
+COLOR_WHITE_CAP = (0.92, 0.92, 0.92)   # 흰색 (keyring 캡, 소형 캡)
+
 # ── 드럼 뚜껑 전체 (메인) ───────────────────────────────────────
 print(f"\n[1/3] drum_lid_total 로딩 (stride={DOWNSAMPLE_STRIDE})...")
 xyz, rgb = read_ply(
     f"{CAD_BASE}/drum_lid_total_CAD.ply",
     stride=DOWNSAMPLE_STRIDE
 )
-add_pointcloud("/World/DrumModel/LidTotal", xyz, rgb)
+add_pointcloud("/World/DrumModel/LidTotal", xyz, rgb,
+               override_color=COLOR_DRUM_LID)
 
 
 # ── 키코드 캡 (작은 흰 캡) ──────────────────────────────────────
@@ -139,7 +149,8 @@ xyz, rgb = read_ply(
     f"{CAD_BASE}/right_drum_key_code_CAD.ply",
     stride=DOWNSAMPLE_STRIDE
 )
-add_pointcloud("/World/DrumModel/KeyCode", xyz, rgb)
+add_pointcloud("/World/DrumModel/KeyCode", xyz, rgb,
+               override_color=COLOR_WHITE_CAP)
 
 
 # ── 큰 뚜껑 캡 (keyring 있는 흰 캡) ────────────────────────────
@@ -148,7 +159,8 @@ xyz, rgb = read_ply(
     f"{CAD_BASE}/right_drum_lid_cap_screwing_CAD.ply",
     stride=DOWNSAMPLE_STRIDE
 )
-add_pointcloud("/World/DrumModel/LidCap", xyz, rgb)
+add_pointcloud("/World/DrumModel/LidCap", xyz, rgb,
+               override_color=COLOR_WHITE_CAP)
 
 
 # ── 완료 ────────────────────────────────────────────────────────
