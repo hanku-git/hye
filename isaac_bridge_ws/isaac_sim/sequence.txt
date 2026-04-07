@@ -1,14 +1,17 @@
-● 최초 1회 설정 (카메라 + 물리 작업공간 추가)
+● 최초 1회 설정 (작업공간 + 카메라 + 드럼 CAD)
   Play(▶) 후 → Script Editor
-    1) setup_workspace.py → Run   (테이블·빈·물리충돌체)
-    2) setup_camera.py    → Run   (Eye-in-Hand 카메라)
+    1) setup_workspace.py  → Run   (바닥·드럼통 몸체·물리충돌체)
+    2) setup_camera.py     → Run   (Eye-in-Hand 카메라 ROS2 퍼블리셔)
+    3) setup_drum_model.py → Run   (드럼 뚜껑 CAD 포인트클라우드 - 비전 테스트용)
   → File → Save  (이후 세션부터 불필요)
 
   작업공간 구조:
-    바닥        : Z=0m       (물리 충돌체)
-    작업 테이블 : X=700mm    상면 Z=800mm (물리 충돌체)
-    파츠 빈     : 테이블 위  상면 Z=1000mm (물리 충돌체)
-    카메라 스캔 : 빈 위 약 1300mm → 카메라 높이 약 1900mm
+    바닥           : Z=0m        (물리 충돌체)
+    드럼통 몸체    : X=400mm Y=300mm  Ø585mm H=440mm (파란 Cylinder, 물리 충돌체)
+    드럼 뚜껑 CAD  : /World/DrumModel  (실제 스캔 PLY → 비전 테스트용 포인트클라우드)
+      └ LidTotal   : 드럼 뚜껑 전체면
+      └ KeyCode    : 키코드 캡 (작은 흰 캡)
+      └ LidCap     : 큰 뚜껑 캡 (keyring)
 
 ─────────────────────────────────────────
 
@@ -55,7 +58,7 @@
   # 로봇 관절 상태 확인
   ros2 topic echo /joint_states --once
 
-  # 로봇 이동 테스트 (큰 각도)
+  # 로봇 이동 테스트
   ros2 service call /dsr01/motion/move_joint dsr_msgs2/srv/MoveJoint \
     "{pos: [30.0, -18.713, 113.394, -0.139, 93.361, -90.833], vel: 20.0, acc: 10.0, time: 0.0}"
 
@@ -64,3 +67,31 @@
 
   # 카메라 이미지 확인
   ros2 run rqt_image_view rqt_image_view
+
+─────────────────────────────────────────
+
+● 비전 테스트: 카메라를 드럼 위로 이동
+
+  # 드럼통 위 스캔 포즈 (드럼 X=400mm Y=300mm 위, Z=900mm, 카메라 하향)
+  # move_line: pos=[x,y,z(mm), rx,ry,rz(ZYZ deg)]
+  ros2 service call /dsr01/motion/move_line dsr_msgs2/srv/MoveLine \
+    "{pos: [400.0, 300.0, 900.0, 0.0, 180.0, 0.0], vel: [20.0, 20.0], acc: [10.0, 10.0], time: 0.0}"
+
+  # 카메라 RGB 이미지 확인 → 드럼 뚜껑 CAD가 보여야 함
+  ros2 run rqt_image_view rqt_image_view
+  # → /zivid/color/image_color 선택
+
+  # 드럼 CAD 위치 수정 필요 시: setup_drum_model.py의 DRUM_X/DRUM_Y/PLY_Z_MIN_M 조정
+
+─────────────────────────────────────────
+
+● 비전 파이프라인 연동
+
+  # SAM 노드 (드럼 상면 세그멘테이션)
+  ros2 run sam_ros sam_node
+
+  # 매칭 노드
+  ros2 launch hanyang_matching_open3d full_pipeline.launch.py
+
+  # 키링 검출
+  ros2 run keyring_detection detect_red_dot_node_for_drum
