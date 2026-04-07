@@ -1,29 +1,66 @@
-● 세션 시작 순서                                                                                                  
-                                         
-  1. Isaac Sim 실행                                                                                               
-  # Isaac Sim 별도 터미널에서 실행                                                                                
-  ~/isaacsim/isaac-sim.sh                                                                                         
-                                                            
-  2. USD 씬 열기                                                                                                  
+● 최초 1회 설정 (카메라 + 물리 작업공간 추가)
+  Play(▶) 후 → Script Editor
+    1) setup_workspace.py → Run   (테이블·빈·물리충돌체)
+    2) setup_camera.py    → Run   (Eye-in-Hand 카메라)
+  → File → Save  (이후 세션부터 불필요)
+
+  작업공간 구조:
+    바닥        : Z=0m       (물리 충돌체)
+    작업 테이블 : X=700mm    상면 Z=800mm (물리 충돌체)
+    파츠 빈     : 테이블 위  상면 Z=1000mm (물리 충돌체)
+    카메라 스캔 : 빈 위 약 1300mm → 카메라 높이 약 1900mm
+
+─────────────────────────────────────────
+
+● 매 세션 시작 순서
+
+  1. Isaac Sim 실행
+  # Isaac Sim 별도 터미널에서 실행
+  ~/isaacsim/isaac-sim.sh
+
+  2. USD 씬 열기
   - File → Open → ~/hye/isaac_bridge_ws/isaac_sim/isaacsim_m1013.usd
-                                                                                                                  
-  3. Play 버튼 누르기 (▶)                                   
-                                                                                                                  
-  4. Script Editor에서 FileWatcher 실행                     
-  - Window → Script Editor                                                                                        
-  - File → Open → ~/hye/isaac_bridge_ws/isaac_sim/isaacsim_filewatcher.py                                         
-  - Run 버튼 클릭                                                        
-  - 콘솔에 FileWatcher ready - smooth interpolation at sim rate 확인                                              
-                                                                                                                  
-  5. Bridge Node 실행 (새 터미널)                                                                                 
-  run_bridge                                                                                                      
-  - DSR Isaac Bridge started 확인                                                                                 
-                                                                                                                  
-  6. UI 실행 (새 터미널)                                                                                          
+
+  3. Play 버튼 누르기 (▶)
+
+  4. Script Editor에서 FileWatcher 실행
+  - Window → Script Editor
+  - File → Open → ~/hye/isaac_bridge_ws/isaac_sim/isaacsim_filewatcher.py
+  - Run 버튼 클릭
+  - 콘솔에 FileWatcher ready - smooth interpolation at sim rate 확인
+  - 콘솔에 Robot ready 확인
+
+  5. Bridge Node 실행 (새 터미널)
+  # koras_kinematics 빌드 (최초 1회 또는 코드 변경 시)
+  cd ~/hye/isaac_bridge_ws && colcon build && source install/setup.bash
+
+  run_bridge
+  - DSR Isaac Bridge started 확인
+  - [koras C++ IK] 로그 확인 (없으면 Python LM IK fallback)
+
+  6. UI 실행 (새 터미널)
   ui
-                                                                                                                  
-  ---                                                       
-  ▎ 주의: Play(▶) 누르기 전에 FileWatcher 실행하면 로봇 초기화 실패.                                              
-  ▎ Play → FileWatcher 순서 지켜야 함.                                                                            
-                                                                                                                  
-  ▎ Play/Stop 반복 시: Stop 후 다시 Play하면 FileWatcher 재실행 필요 (Step 4 반복).   
+
+─────────────────────────────────────────
+
+● 주의사항
+  ▎ Play(▶) 전에 FileWatcher 실행하면 로봇 초기화 실패.
+  ▎ Play → FileWatcher 순서 지켜야 함.
+  ▎ Play/Stop 반복 시: Stop 후 다시 Play하면 FileWatcher 재실행 필요 (Step 4 반복).
+
+─────────────────────────────────────────
+
+● 동작 확인 명령어
+
+  # 로봇 관절 상태 확인
+  ros2 topic echo /joint_states --once
+
+  # 로봇 이동 테스트 (큰 각도)
+  ros2 service call /dsr01/motion/move_joint dsr_msgs2/srv/MoveJoint \
+    "{pos: [30.0, -18.713, 113.394, -0.139, 93.361, -90.833], vel: 20.0, acc: 10.0, time: 0.0}"
+
+  # 카메라 토픽 확인
+  ros2 topic list | grep zivid
+
+  # 카메라 이미지 확인
+  ros2 run rqt_image_view rqt_image_view
