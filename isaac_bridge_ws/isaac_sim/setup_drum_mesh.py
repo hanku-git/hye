@@ -30,14 +30,11 @@ DRUM_TOP_Z = 0.440   # m
 PLY_Z_MIN_M = -0.0265
 WORLD_Z     = DRUM_TOP_Z - PLY_Z_MIN_M   # 0.4665 m
 
-# OBJ 파일 목록: (obj파일, usd파일, 색상RGB, 표면용도)
+# OBJ 파일 목록: (obj파일, usd파일, 색상RGB, prim이름)
+# right_drum_key_code 와 right_drum_lid_cap_screwing 은 동일한 PLY → drum_lid_total 에 이미 포함
 MESHES = [
-    ("drum_lid_total.obj",              "drum_lid_total.usd",
-     (0.08, 0.35, 0.78), "LidTotal"),   # 파란 뚜껑
-    ("right_drum_key_code.obj",         "right_drum_key_code.usd",
-     (0.92, 0.92, 0.92), "KeyCode"),    # 흰 소형 캡
-    ("right_drum_lid_cap_screwing.obj", "right_drum_lid_cap_screwing.usd",
-     (0.92, 0.92, 0.92), "LidCap"),     # 흰 대형 캡 (keyring)
+    ("drum_lid_total.obj", "drum_lid_total.usd",
+     (0.08, 0.35, 0.78), "LidTotal"),   # 뚜껑 전체 (캡 포함)
 ]
 
 
