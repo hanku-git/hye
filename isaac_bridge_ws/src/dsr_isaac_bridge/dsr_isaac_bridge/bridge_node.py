@@ -19,6 +19,8 @@ from scipy.spatial.transform import Rotation
 
 from dsr_msgs2.srv import MoveJoint, MoveLine
 from sensor_msgs.msg import JointState
+from geometry_msgs.msg import TransformStamped
+from tf2_ros import StaticTransformBroadcaster
 
 import sys
 import importlib.util as _ilu
@@ -300,6 +302,10 @@ class DsrIsaacBridge(Node):
         )
         self.create_timer(0.05, self._publish_joint_states)
 
+        # Static TF: world → zivid_camera (RViz PointCloud2 프레임 에러 해결)
+        self._tf_broadcaster = StaticTransformBroadcaster(self)
+        self._publish_static_tf()
+
         # 충돌 감지 모니터 (Isaac Sim filewatcher → /tmp/isaac_collision.json)
         # 이전 세션 파일 초기화
         _col_file = "/tmp/isaac_collision.json"
@@ -312,6 +318,19 @@ class DsrIsaacBridge(Node):
         self.get_logger().info("DSR Isaac Bridge started")
         self.get_logger().info(f"  move_joint : {ROBOT_ID}/motion/move_joint")
         self.get_logger().info(f"  move_line  : {ROBOT_ID}/motion/move_line  [{ik_backend}]")
+
+    def _publish_static_tf(self):
+        """world → zivid_camera static TF 발행 (RViz Fixed Frame 에러 해결)"""
+        t = TransformStamped()
+        t.header.stamp = self.get_clock().now().to_msg()
+        t.header.frame_id = "world"
+        t.child_frame_id  = "zivid_camera"
+        # 카메라는 로봇 arm에 붙어 움직이므로 위치는 임의값 (RViz 표시용)
+        t.transform.translation.x = 0.0
+        t.transform.translation.y = 0.0
+        t.transform.translation.z = 1.0
+        t.transform.rotation.w = 1.0
+        self._tf_broadcaster.sendTransform(t)
 
     # ── 콜백 ──────────────────────────────────────────────────────────────────
 
